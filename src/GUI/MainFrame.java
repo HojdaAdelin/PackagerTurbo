@@ -44,12 +44,49 @@ public class MainFrame extends JFrame {
         noteButton.setFocusable(false);
         noteButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
+        JButton braveButton = new JButton();
+        braveButton.setBounds(20, noteButton.getY()+60, 180, 40);
+        braveButton.setText("Download Brave");
+        braveButton.setFocusable(false);
+        braveButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+        JButton notionButton = new JButton();
+        notionButton.setBounds(20, braveButton.getY()+60, 180, 40);
+        notionButton.setText("Download Notion");
+        notionButton.setFocusable(false);
+        notionButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+        JButton jetButton = new JButton();
+        jetButton.setBounds(20, notionButton.getY()+60, 180, 40);
+        jetButton.setText("Download JetBrains");
+        jetButton.setFocusable(false);
+        jetButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+        JButton chromeButton = new JButton();
+        chromeButton.setBounds(20, jetButton.getY()+60, 180, 40);
+        chromeButton.setText("Download Chrome");
+        chromeButton.setFocusable(false);
+        chromeButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+        JButton elevenButton = new JButton();
+        elevenButton.setBounds(20, chromeButton.getY()+60, 180, 40);
+        elevenButton.setText("Download Eleven-Terminal");
+        elevenButton.setFocusable(false);
+        elevenButton.setFont(new Font("Helvetica",Font.BOLD, 12));
+        elevenButton.setFont(new Font("Helvetica",Font.BOLD, 10));
+
 
         this.add(leftPanel);
         this.add(rightPanel);
         leftPanel.add(gitButton);
         leftPanel.add(vsButton);
         leftPanel.add(noteButton);
+        leftPanel.add(braveButton);
+        leftPanel.add(notionButton);
+        leftPanel.add(jetButton);
+        leftPanel.add(chromeButton);
+        leftPanel.add(elevenButton);
+
     }
 
 }
