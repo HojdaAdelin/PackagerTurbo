@@ -1,11 +1,15 @@
 package GUI;
 
+import Functions.AppsDownload;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
 
     public MainFrame() {
+
+        AppsDownload gitobj = new AppsDownload();
 
         ImageIcon frameIcon = new ImageIcon("assets/ico.png");
         this.setSize(800, 550);
@@ -26,6 +30,13 @@ public class MainFrame extends JFrame {
         JButton gitButton = new JButton();
         gitButton.setBounds(20, 20, 180, 40);
         gitButton.setText("Download Git");
+        gitButton.addActionListener(e -> {
+            try {
+                gitobj.gitLink();
+            }  catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         gitButton.setFocusable(false);
         gitButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
