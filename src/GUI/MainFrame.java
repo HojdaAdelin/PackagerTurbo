@@ -10,6 +10,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
 
         AppsDownload gitobj = new AppsDownload();
+        AppsDownload vsobj = new AppsDownload();
 
         ImageIcon frameIcon = new ImageIcon("assets/ico.png");
         this.setSize(800, 550);
@@ -43,6 +44,13 @@ public class MainFrame extends JFrame {
         JButton vsButton = new JButton();
         vsButton.setBounds(20, gitButton.getY()+60, 180, 40);
         vsButton.setText("Download VS Code");
+        vsButton.addActionListener(e -> {
+            try {
+                vsobj.vsLink();
+            } catch (Exception ex) {
+                throw  new RuntimeException(ex);
+            }
+        });
         vsButton.setFocusable(false);
         vsButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
