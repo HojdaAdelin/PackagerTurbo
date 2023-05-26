@@ -16,16 +16,13 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
 
         // Create panels
-        JPanel leftPanel = new JPanel();
-        leftPanel.setBackground(new Color(123, 154, 227));
-        leftPanel.setBounds(0,0,this.getWidth()/2, this.getHeight());
-        leftPanel.setLayout(null);
-
-        JPanel rightPanel = new JPanel();
-        rightPanel.setBackground(new Color(123, 154, 227));
-        rightPanel.setBounds(this.getWidth()/2, 0,leftPanel.getWidth(), this.getHeight());
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(new Color(123, 154, 227));
+        mainPanel.setBounds(0,0,800, 550);
+        mainPanel.setLayout(null);
 
         // Buttons
+        // Left Buttons
         JButton gitButton = new JButton();
         gitButton.setBounds(20, 20, 180, 40);
         gitButton.setText("Download Git");
@@ -72,20 +69,41 @@ public class MainFrame extends JFrame {
         elevenButton.setBounds(20, chromeButton.getY()+60, 180, 40);
         elevenButton.setText("Download Eleven-Terminal");
         elevenButton.setFocusable(false);
-        elevenButton.setFont(new Font("Helvetica",Font.BOLD, 12));
         elevenButton.setFont(new Font("Helvetica",Font.BOLD, 10));
 
+        // Right buttons
 
-        this.add(leftPanel);
-        this.add(rightPanel);
-        leftPanel.add(gitButton);
-        leftPanel.add(vsButton);
-        leftPanel.add(noteButton);
-        leftPanel.add(braveButton);
-        leftPanel.add(notionButton);
-        leftPanel.add(jetButton);
-        leftPanel.add(chromeButton);
-        leftPanel.add(elevenButton);
+        JButton sourceButton = new JButton();
+        sourceButton.setBounds(590, 20, 180, 40);
+        sourceButton.setText("Project Src");
+        sourceButton.setFocusable(false);
+        sourceButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+        JButton changeButton = new JButton();
+        changeButton.setBounds(590, sourceButton.getY() +60, 180, 40);
+        changeButton.setText("Change log");
+        changeButton.setFocusable(false);
+        changeButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+        JButton reportButton = new JButton();
+        reportButton.setBounds(590, changeButton.getY() +60, 180, 40);
+        reportButton.setText("Bugs report");
+        reportButton.setFocusable(false);
+        reportButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+
+
+        this.add(mainPanel);
+        mainPanel.add(gitButton);
+        mainPanel.add(vsButton);
+        mainPanel.add(noteButton);
+        mainPanel.add(braveButton);
+        mainPanel.add(notionButton);
+        mainPanel.add(jetButton);
+        mainPanel.add(chromeButton);
+        mainPanel.add(elevenButton);
+        mainPanel.add(sourceButton);
+        mainPanel.add(changeButton);
+        mainPanel.add(reportButton);
 
     }
 
