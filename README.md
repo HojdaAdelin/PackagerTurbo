@@ -5,7 +5,7 @@ For now this application is in BETA, but in the future I plan to develop more fu
 # Menu
 
 <p align="center">
-<img src="Images/Packager.png" width="850" height="300">
+<img src="Images/Packager.png" width="700" height="450">
 </p>
 
 # Features
