@@ -1,5 +1,6 @@
 package GUI;
 import Functions.AppsDownload;
+import Functions.LinkOpener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
 
         AppsDownload objAppDownload = new AppsDownload();
+        LinkOpener objLinkOpener = new LinkOpener();
 
         // Create panels
         JPanel mainPanel = new JPanel();
@@ -177,6 +179,13 @@ public class MainFrame extends JFrame {
         JButton sourceButton = new JButton();
         sourceButton.setBounds(590, 20, 180, 40);
         sourceButton.setText("Project Src");
+        sourceButton.addActionListener(e -> {
+
+            String src_link = "https://www.example.com";
+
+            objLinkOpener.openLink(src_link);
+
+        });
         sourceButton.setFocusable(false);
         sourceButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
