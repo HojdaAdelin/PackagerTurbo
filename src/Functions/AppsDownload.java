@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 
 public class AppsDownload {
 
     public void downloadFile(String fileUrl, String downloadDirectory) throws IOException {
         URL url = new URL(fileUrl);
+
         String fileName = getFileNameFromUrl(fileUrl);
         String savePath = downloadDirectory + "/" + fileName;
 
