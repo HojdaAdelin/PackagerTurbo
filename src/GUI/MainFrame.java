@@ -86,7 +86,7 @@ public class MainFrame extends JFrame {
 
             try {
                 objAppDownload.downloadFile(fileUrl, downloadDirectory);
-                JOptionPane.showMessageDialog(this, "NotePad++ installer was successfully installed\nDirectory: C:\\Packager");
+                JOptionPane.showMessageDialog(this, "Brave installer was successfully installed\nDirectory: C:\\Packager");
             } catch (IOException ex) {
                 System.out.println("An error occurred while downloading the file: " + ex.getMessage());
             }
@@ -96,27 +96,79 @@ public class MainFrame extends JFrame {
         braveButton.setFocusable(false);
         braveButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
-        JButton notionButton = new JButton();
-        notionButton.setBounds(20, braveButton.getY()+60, 180, 40);
-        notionButton.setText("Download Notion");
-        notionButton.setFocusable(false);
-        notionButton.setFont(new Font("Helvetica",Font.BOLD, 14));
+        JButton discordButton = new JButton();
+        discordButton.setBounds(20, braveButton.getY()+60, 180, 40);
+        discordButton.setText("Download Discord");
+        discordButton.addActionListener(e -> {
+
+            String fileUrl = "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86/DiscordSetup.exe";
+            String downloadDirectory = "C:/Packager";
+
+            try {
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "Discord installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
+            }
+
+        });
+        discordButton.setFocusable(false);
+        discordButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
         JButton jetButton = new JButton();
-        jetButton.setBounds(20, notionButton.getY()+60, 180, 40);
+        jetButton.setBounds(20, discordButton.getY()+60, 180, 40);
         jetButton.setText("Download JetBrains");
+        jetButton.addActionListener(e -> {
+
+            String fileUrl = "https://www.jetbrains.com/fleet/download/download-thanks.html?platform=windows/jetbrains-toolbox-1.28.1.15219.exe";
+            String downloadDirectory = "C:/Packager";
+
+            try {
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "JetBrains installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
+            }
+
+        });
         jetButton.setFocusable(false);
         jetButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
         JButton chromeButton = new JButton();
         chromeButton.setBounds(20, jetButton.getY()+60, 180, 40);
         chromeButton.setText("Download Chrome");
+        chromeButton.addActionListener(e -> {
+
+            String fileUrl = "https://www.google.com/chrome/thank-you.html?statcb=1&installdataindex=empty&defaultbrowser=0#/ChromeSetup.exe";
+            String downloadDirectory = "C:/Packager";
+
+            try {
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "Chrome installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
+            }
+
+        });
         chromeButton.setFocusable(false);
         chromeButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
         JButton elevenButton = new JButton();
         elevenButton.setBounds(20, chromeButton.getY()+60, 180, 40);
         elevenButton.setText("Download Eleven-Terminal");
+        elevenButton.addActionListener(e -> {
+
+            String fileUrl = "https://github.com/HojdaAdelin/Eleven-Terminal/releases/download/v2.2/ElevenTerminal.exe";
+            String downloadDirectory = "C:/Packager";
+
+            try {
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "Eleven Terminal was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
+            }
+
+        });
         elevenButton.setFocusable(false);
         elevenButton.setFont(new Font("Helvetica",Font.BOLD, 10));
 
@@ -154,7 +206,7 @@ public class MainFrame extends JFrame {
         mainPanel.add(vsButton);
         mainPanel.add(noteButton);
         mainPanel.add(braveButton);
-        mainPanel.add(notionButton);
+        mainPanel.add(discordButton);
         mainPanel.add(jetButton);
         mainPanel.add(chromeButton);
         mainPanel.add(elevenButton);
