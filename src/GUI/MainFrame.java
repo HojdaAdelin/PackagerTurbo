@@ -192,12 +192,23 @@ public class MainFrame extends JFrame {
         JButton changeButton = new JButton();
         changeButton.setBounds(590, sourceButton.getY() +60, 180, 40);
         changeButton.setText("Change log");
+        changeButton.addActionListener(e -> {
+
+            JOptionPane.showMessageDialog(this, "-Apps links" + "\n-Src link" + "\n-Change log & bugs configure");
+
+        });
         changeButton.setFocusable(false);
         changeButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
         JButton reportButton = new JButton();
         reportButton.setBounds(590, changeButton.getY() +60, 180, 40);
         reportButton.setText("Bugs report");
+        reportButton.addActionListener(e -> {
+
+            String report_link = "https://github.com/HojdaAdelin/PackagerTurbo/issues";
+
+            objLinkOpener.openLink(report_link);
+        });
         reportButton.setFocusable(false);
         reportButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
