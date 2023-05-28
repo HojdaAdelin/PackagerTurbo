@@ -1,24 +1,15 @@
 package GUI;
-
 import Functions.AppsDownload;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
 
     public MainFrame() {
 
-        AppsDownload gitobj = new AppsDownload();
-        AppsDownload vsobj = new AppsDownload();
-
-        ImageIcon frameIcon = new ImageIcon("assets/ico.png");
-        this.setSize(800, 550);
-        this.setTitle("Packager Turbo");
-        this.setResizable(false);
-        this.setIconImage(frameIcon.getImage());
-        this.getContentPane().setBackground(new Color(145, 148, 170));
-        this.setVisible(true);
+        AppsDownload objAppDownload = new AppsDownload();
 
         // Create panels
         JPanel mainPanel = new JPanel();
@@ -32,11 +23,18 @@ public class MainFrame extends JFrame {
         gitButton.setBounds(20, 20, 180, 40);
         gitButton.setText("Download Git");
         gitButton.addActionListener(e -> {
+
+            String fileUrl = "https://github.com/git-for-windows/git/releases/download/v2.40.1.windows.1/Git-2.40.1-64-bit.exe";
+            String downloadDirectory = "C:/Packager";
+
             try {
-                gitobj.gitLink();
-            }  catch (Exception ex) {
-                throw new RuntimeException(ex);
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "GIT installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
             }
+
+
         });
         gitButton.setFocusable(false);
         gitButton.setFont(new Font("Helvetica",Font.BOLD, 14));
@@ -45,10 +43,15 @@ public class MainFrame extends JFrame {
         vsButton.setBounds(20, gitButton.getY()+60, 180, 40);
         vsButton.setText("Download VS Code");
         vsButton.addActionListener(e -> {
+
+            String fileUrl = "https://code.visualstudio.com/docs/?dv=win/VSCodeUserSetup-x64-1.78.2.exe";
+            String downloadDirectory = "C:/Packager";
+
             try {
-                vsobj.vsLink();
-            } catch (Exception ex) {
-                throw  new RuntimeException(ex);
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "VS Code installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
             }
         });
         vsButton.setFocusable(false);
@@ -57,12 +60,39 @@ public class MainFrame extends JFrame {
         JButton noteButton = new JButton();
         noteButton.setBounds(20, vsButton.getY()+60, 180, 40);
         noteButton.setText("Download NotePad++");
+        noteButton.addActionListener(e -> {
+
+            String fileUrl = "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.3/npp.8.5.3.Installer.x64.exe";
+            String downloadDirectory = "C:/Packager";
+
+            try {
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "NotePad++ installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
+            }
+
+        });
         noteButton.setFocusable(false);
         noteButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
         JButton braveButton = new JButton();
         braveButton.setBounds(20, noteButton.getY()+60, 180, 40);
         braveButton.setText("Download Brave");
+        braveButton.addActionListener(e -> {
+
+            String fileUrl = "https://laptop-updates.brave.com/download/BRV010/BraveBrowserSetup-BRV010.exe";
+            String downloadDirectory = "C:/Packager";
+
+            try {
+                objAppDownload.downloadFile(fileUrl, downloadDirectory);
+                JOptionPane.showMessageDialog(this, "NotePad++ installer was successfully installed\nDirectory: C:\\Packager");
+            } catch (IOException ex) {
+                System.out.println("An error occurred while downloading the file: " + ex.getMessage());
+            }
+
+        });
+
         braveButton.setFocusable(false);
         braveButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
@@ -111,6 +141,14 @@ public class MainFrame extends JFrame {
         reportButton.setFont(new Font("Helvetica",Font.BOLD, 14));
 
 
+        ImageIcon frameIcon = new ImageIcon("assets/ico.png");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800, 550);
+        this.setTitle("Packager Turbo");
+        this.setResizable(false);
+        this.setIconImage(frameIcon.getImage());
+        this.getContentPane().setBackground(new Color(145, 148, 170));
+        this.setVisible(true);
         this.add(mainPanel);
         mainPanel.add(gitButton);
         mainPanel.add(vsButton);

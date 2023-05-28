@@ -1,31 +1,42 @@
 package Functions;
-import java.awt.Desktop;
-import java.net.URI;
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class AppsDownload {
-    public void gitLink() throws Exception {
-        String link = "https://git-scm.com/download/win";
-        Desktop desktop = Desktop.getDesktop();
 
-        if (Desktop.isDesktopSupported() && desktop.isSupported(Desktop.Action.BROWSE)) {
-            URI uri = new URI(link);
-            desktop.browse(uri);
-        } else {
-            throw new UnsupportedOperationException("Opening links is not supported on this platform.");
+    public void downloadFile(String fileUrl, String downloadDirectory) throws IOException {
+        URL url = new URL(fileUrl);
+        String fileName = getFileNameFromUrl(fileUrl);
+        String savePath = downloadDirectory + "/" + fileName;
+
+        Path saveDirectory = Path.of(downloadDirectory);
+        if (!Files.exists(saveDirectory)) {
+            Files.createDirectories(saveDirectory);
+        }
+
+        try (BufferedInputStream in = new BufferedInputStream(url.openStream());
+             FileOutputStream fileOutputStream = new FileOutputStream(savePath)) {
+
+            byte[] dataBuffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+                fileOutputStream.write(dataBuffer, 0, bytesRead);
+            }
         }
     }
 
-    public void vsLink() throws Exception {
-
-        String link = "https://code.visualstudio.com/download";
-        Desktop vsdesktop = Desktop.getDesktop();
-
-        if (Desktop.isDesktopSupported() && vsdesktop.isSupported(Desktop.Action.BROWSE)) {
-            URI uri = new URI(link);
-            vsdesktop.browse(uri);
+    public String getFileNameFromUrl(String fileUrl) {
+        int lastSlashIndex = fileUrl.lastIndexOf("/");
+        if (lastSlashIndex != -1 && lastSlashIndex < fileUrl.length() - 1) {
+            return fileUrl.substring(lastSlashIndex + 1);
         } else {
-            throw new UnsupportedOperationException("Opening links is not supported on this platform.");
+            return "";
         }
-
     }
+
 }
